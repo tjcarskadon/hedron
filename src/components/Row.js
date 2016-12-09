@@ -33,6 +33,8 @@ RowContainer.propTypes = {
   alignSelf: React.PropTypes.string,
   justifyContent: React.PropTypes.string,
   order: React.PropTypes.string,
+  flexDisplay: React.PropTypes.string,
+  flexDirection: React.PropTypes.string,
 };
 
 RowContainer.defaultProps = {
@@ -40,8 +42,14 @@ RowContainer.defaultProps = {
 };
 
 const Row = styled(RowContainer)`
-  display: flex;
-  flex-direction: row;
+  /*display: flex;*/
+  ${props => props.flexDisplay
+    ? `display: ${props.flexDisplay};`
+    : `display: flex`}
+  /*flex-direction: row;*/
+  ${props => props.flexDirection
+    ? `flex-direction: ${props.flexDirection};`
+    : `flex-direction: row`};
   flex-wrap: wrap;
   ${props => props.alignContent
     ? `align-content: ${props.alignContent};`
@@ -67,4 +75,3 @@ const Row = styled(RowContainer)`
 
 
 export default Row;
-
